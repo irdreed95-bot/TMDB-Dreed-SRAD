@@ -413,3 +413,6 @@ const server = app.listen(PORT, HOST, () => {
 });
 
 server.on('error', (err)=>{ console.error('[diagnostic] server error', err); });
+
+// تصدير التطبيق لمنصة Vercel
+module.exports = app;
