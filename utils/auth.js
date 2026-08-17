@@ -12,14 +12,14 @@ const LOAD_INTERVAL_MS = 30 * 1000; // reload at most every 30s
 
 function ensureAuthFile() {
   if (fs.existsSync(AUTH_FILE)) return;
-  const defaultPassword = 'change-me';
+  const defaultPassword = 'DREED12345FNR';
   const { hash } = hashPassword(defaultPassword);
   const data = {
-    info: 'Initial default credentials. CHANGE THE PASSWORD IMMEDIATELY using /auth/change-password after logging in.',
-    users: [ { username: 'admin', hash } ]
+    info: 'Admin credentials. Change the password using /auth/change-password if needed.',
+    users: [ { username: 'DREED12', hash } ]
   };
   fs.writeFileSync(AUTH_FILE, JSON.stringify(data, null, 2));
-  console.warn('[auth] Created default auth-users.json with username "admin" and password "change-me". CHANGE IT NOW.');
+  console.warn('[auth] Created default auth-users.json with username "DREED12" and password "DREED12345FNR". Change it if needed.');
 }
 
 function loadUsers(force=false){
@@ -107,10 +107,10 @@ function validateSessionToken(token){
   }
 }
 
-function authenticate(DREED12, DREED12345FNR){
-  const user = findUser(DREED12);
+function authenticate(username, password){
+  const user = findUser(username);
   if (!user) return false;
-  return verifyPassword(DREED12345FNR, user.hash);
+  return verifyPassword(password, user.hash);
 }
 
 function getSession(req){
