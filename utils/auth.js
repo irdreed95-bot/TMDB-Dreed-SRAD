@@ -107,10 +107,10 @@ function validateSessionToken(token){
   }
 }
 
-function authenticate(username, password){
-  const user = findUser(username);
+function authenticate(DREED12, DREED12345FNR){
+  const user = findUser(DREED12);
   if (!user) return false;
-  return verifyPassword(password, user.hash);
+  return verifyPassword(DREED12345FNR, user.hash);
 }
 
 function getSession(req){
